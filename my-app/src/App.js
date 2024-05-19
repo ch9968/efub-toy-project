@@ -1,16 +1,16 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Header from "./components/Header";
-import Main from "./components/Main";
+import Widgets from "./components/Widgets";
+import Feed from "./components/Feed";
 import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <>
-      <Header />
-      <Main />
+    <div className="app">
       <Navbar />
-    </>
+      <Feed />
+      <Widgets />
+    </div>
   );
 }
 
