@@ -12,7 +12,41 @@ const BackgroundBox = styled.div`
   background-color: #3b3939;
 `;
 
-function MyPage() {
+const ProfileText = styled.div`
+  margin-left: 15px;
+  display: flex;
+  font-size: 24px;
+  flex-direction: column;
+  & > p {
+    font-size: 16px;
+    color: grey;
+    margin-bottom: 10px;
+  }
+
+  div {
+    display: grid;
+    width: 55%;
+    grid-template-columns: 1fr 1fr;
+
+    div {
+      display: flex;
+    }
+
+    h6 {
+      font-size: 16px;
+      color: white;
+      margin-right: 8px;
+    }
+
+    p {
+      font-size: 16px;
+      text-align: left;
+      color: grey;
+    }
+  }
+`;
+
+function MyPage({ name, id }) {
   return (
     <div className="app">
       <Navbar />
@@ -30,6 +64,21 @@ function MyPage() {
             marginTop: "-120px",
           }}
         />
+        <ProfileText>
+          <h5>{name}</h5>
+          <p>{id}</p>
+          <p>Joined May 2024</p>
+          <div>
+            <div>
+              <h6>1</h6>
+              <p>Following</p>
+            </div>
+            <div>
+              <h6>1.4K</h6>
+              <p>Followers</p>
+            </div>
+          </div>
+        </ProfileText>
       </MiddleContainer>
 
       <Widgets />

@@ -8,7 +8,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/me" element={<MyPage />} />
+      <Route path="/me" element={<MyPage name="이찬희" id="@meow__" />} />
       <Route path="/posts/:id" element={<PostDetailPage />} />
     </Routes>
   );
