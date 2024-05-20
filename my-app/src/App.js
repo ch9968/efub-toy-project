@@ -1,13 +1,15 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import HomePage from "./components/pages/HomePage";
-import ListDetailPage from "./components/pages/ListDetailPage";
-import MyPage from "./components/pages/ListDetailPage";
+import PostDetailPage from "./components/pages/PostDetailPage";
+import MyPage from "./components/pages/MyPage";
 import React from "react";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/me" element={<MyPage />} />
+      <Route path="/posts/:id" element={<PostDetailPage />} />
     </Routes>
   );
 }

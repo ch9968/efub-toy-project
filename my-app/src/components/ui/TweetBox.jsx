@@ -1,6 +1,9 @@
 import React from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import styled from "styled-components";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Profile from "./Profile";
 const TweetBoxContainer = styled.div`
   padding-right: 10px;
   padding-bottom: 10px;
@@ -19,6 +22,8 @@ const TweetBox__input = styled.div`
     margin-left: 20px;
     font-size: 20px;
     border: none;
+    background-color: black;
+    color: white;
   }
 `;
 const StyledAccountCircleIcon = styled(AccountCircleIcon)`
@@ -42,14 +47,33 @@ const PostButton = styled.button`
 `;
 
 function TweetBox() {
+  const [tweetMessage, setTweetMessage] = useState("");
+  const postTweet = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post(`blabla/posts`, {
+        message: tweetMessage,
+      });
+      setTweetMessage("");
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <TweetBoxContainer>
       <form>
         <TweetBox__input>
           <StyledAccountCircleIcon />
-          <input placeholder="What's happening?" type="text" />
+          <input
+            onChange={(e) => setTweetMessage(e.target.value)}
+            value={tweetMessage}
+            placeholder="What's happening?"
+            type="text"
+          />
         </TweetBox__input>
-        <PostButton>Post</PostButton>
+        <PostButton onClick={postTweet} type="submit">
+          Post
+        </PostButton>
       </form>
     </TweetBoxContainer>
   );

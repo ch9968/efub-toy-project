@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledNavbarOption = styled.div`
+  border-radius: 20px;
   display: flex;
   align-items: center;
   padding: 20px 20px;
@@ -13,8 +14,7 @@ const StyledNavbarOption = styled.div`
     margin-right: 20px;
   }
   &:hover {
-    background-color: grey;
-    border-radius: 20px;
+    background-color: #292929;
     transition: 300ms;
   }
   &.NavbarOption--active {

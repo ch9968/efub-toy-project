@@ -15,6 +15,7 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import NavbarOption from "./NavbarOption";
 import BookmarkBorderRounded from "@mui/icons-material/BookmarkBorderRounded";
+import Profile from "./Profile";
 const StyledXIcon = styled(XIcon)`
   margin-left: 20px;
   margin-bottom: 20px;
@@ -43,6 +44,7 @@ const PostButton = styled.button`
   text-transform: inherit;
   border-radius: 30px;
   margin-top: 20px;
+  margin-bottom: 60px;
   cursor: pointer;
 `;
 
@@ -62,6 +64,7 @@ const Navbar = () => {
       <NavbarOption Icon={PersonOutlineOutlinedIcon} text="Profile" />
       <NavbarOption Icon={MoreHorizIcon} text="More" />
       <PostButton>Post</PostButton>
+      <Profile name="이찬희" id="@meow__" />
     </NavbarContainer>
   );
 };
