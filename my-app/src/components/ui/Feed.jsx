@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import TweetBox from "./TweetBox";
-import Post from "./Post";
+import PostList from "./PostList";
 
 const FeedContainer = styled.div`
   flex: 0.4;
@@ -15,6 +15,7 @@ const FeedContainer = styled.div`
   }
 `;
 const FeedHeader = styled.div`
+  background: black;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -29,10 +30,10 @@ const Feed = () => {
         <h2>Home</h2>
       </FeedHeader>
       <TweetBox />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      <PostList />
+      <PostList />
+      <PostList />
+      <PostList />
     </FeedContainer>
   );
 };

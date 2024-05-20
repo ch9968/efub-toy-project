@@ -35,7 +35,7 @@ const PostHeaderDescription = styled.div`
   margin-bottom: 10px;
 `;
 
-function Post({ displayName, userName, verified, time }) {
+function PostList({ displayName, userName, verified, time }) {
   return (
     <PostContainer>
       <AccountCircleIcon />
@@ -63,4 +63,4 @@ function Post({ displayName, userName, verified, time }) {
   );
 }
 
-export default Post;
+export default PostList;
