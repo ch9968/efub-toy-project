@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 const WidgetsContainer = styled.div`
-  flex: 0.3;
+  flex: 1fr;
 `;
 
 function Widgets() {

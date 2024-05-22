@@ -2,14 +2,31 @@ import "../../App.css";
 import Widgets from "../ui/Widgets";
 import Navbar from "../ui/Navbar";
 import styled from "styled-components";
-import MiddleHeader from "../ui/MiddleHeader";
 import MiddleContainer from "../ui/MiddleContainer";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
+const MyPageHeader = styled.div``;
 const BackgroundBox = styled.div`
   width: 100%;
   height: 300px;
   background-color: #3b3939;
+`;
+const MyProfileBox = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+`;
+
+const ProfileBtn = styled.button`
+  background-color: black;
+  color: white;
+  border: 1px solid rgb(83, 100, 113);
+  padding: 8px 16px;
+  margin-top: 10px;
+  margin-right: 10px;
+  font-size: 15px;
+  border-radius: 20px;
 `;
 
 const ProfileText = styled.div`
@@ -51,19 +68,24 @@ function MyPage({ name, id }) {
     <div className="app">
       <Navbar />
       <MiddleContainer>
-        <MiddleHeader>
+        <MyPageHeader>
           <KeyboardBackspaceIcon />
           <h2>이찬희</h2>
-        </MiddleHeader>
+        </MyPageHeader>
         <BackgroundBox />
-        <AccountCircleIcon
-          style={{
-            fontSize: "200px",
-            color: "grey",
-            marginLeft: "10px",
-            marginTop: "-120px",
-          }}
-        />
+        <MyProfileBox>
+          <img
+            src="/img/profilePic.png"
+            style={{
+              borderRadius: "50%",
+              height: "150px",
+              width: "150px",
+              marginLeft: "20px",
+              marginTop: "-75px",
+            }}
+          />
+          <ProfileBtn>Set up Profile</ProfileBtn>
+        </MyProfileBox>
         <ProfileText>
           <h5>{name}</h5>
           <p>{id}</p>

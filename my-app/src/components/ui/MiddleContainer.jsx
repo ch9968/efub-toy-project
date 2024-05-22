@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const MiddleContainer = styled.div`
-  flex: 0.4;
-  border-right: 0.001px solid;
+  width: 600px;
+  border-left: 1px solid rgb(47, 51, 54);
   min-width: fit-content;
   overflow-y: scroll;
   -ms-overflow-style: none;

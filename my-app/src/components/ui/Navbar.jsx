@@ -25,12 +25,13 @@ const NavbarContainer = styled.div`
   margin-left: 40px;
   display: flex;
   flex-direction: column;
-  border-right: 0.001px solid;
-  flex: 0.3;
+  flex: 1fr;
   /*min-width: 250px;*/
   margin-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
+  overflow-y: scroll;
+  min-width: fit-content;
 `;
 
 const PostButton = styled.button`
@@ -46,6 +47,10 @@ const PostButton = styled.button`
   margin-top: 20px;
   margin-bottom: 60px;
   cursor: pointer;
+  &:hover {
+    filter: brightness(75%);
+    transition: 0.2s;
+  }
 `;
 
 const Navbar = () => {

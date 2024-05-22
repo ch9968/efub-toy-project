@@ -18,6 +18,11 @@ const ProfileContainer = styled.div`
     background-color: #292929;
     transition: 300ms;
   }
+  & > img {
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 `;
 const ProfileText = styled.div`
   margin-left: 10px;
@@ -31,7 +36,7 @@ const ProfileText = styled.div`
 function Profile({ name, id }) {
   return (
     <ProfileContainer>
-      <AccountCircleIcon />
+      <img src="/img/profilePic.png" alt="profilePicture" />
       <ProfileText>
         <h5>{name}</h5>
         <p>{id}</p>

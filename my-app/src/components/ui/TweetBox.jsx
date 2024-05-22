@@ -4,10 +4,11 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Profile from "./Profile";
+
 const TweetBoxContainer = styled.div`
   padding-right: 10px;
   padding-bottom: 10px;
-  border-bottom: 0.1px solid;
+  border-bottom: 1px solid rgb(47, 51, 54);
 
   & > form {
     display: flex;
@@ -19,11 +20,22 @@ const TweetBox__input = styled.div`
   display: flex;
   & > input {
     flex: 1;
-    margin-left: 20px;
+    margin-left: 10px;
     font-size: 20px;
     border: none;
     background-color: black;
     color: white;
+    outline: none;
+  }
+
+  & > img {
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    &:hover {
+      filter: brightness(75%);
+      transition: 0.2s;
+    }
   }
 `;
 const StyledAccountCircleIcon = styled(AccountCircleIcon)`
@@ -33,17 +45,19 @@ const PostButton = styled.button`
   background-color: rgb(29, 155, 240);
   color: white;
   border: none;
-  width: 100px;
-  height: 50px;
-  padding: 15px 30px;
-  font-size: 20px;
-  font-weight: 900;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
   text-transform: inherit;
   border-radius: 30px;
   margin-right: 20px;
   margin-top: 20px;
   margin-left: auto; /*오른쪽으로 밀기 */
   cursor: pointer;
+  &:hover {
+    filter: brightness(75%);
+    transition: 0.2s;
+  }
 `;
 
 function TweetBox() {
@@ -63,11 +77,11 @@ function TweetBox() {
     <TweetBoxContainer>
       <form>
         <TweetBox__input>
-          <StyledAccountCircleIcon />
+          <img src="/img/profilePic.png" alt="profilePicture" />
           <input
             onChange={(e) => setTweetMessage(e.target.value)}
             value={tweetMessage}
-            placeholder="What's happening?"
+            placeholder="What is happening?!"
             type="text"
           />
         </TweetBox__input>
