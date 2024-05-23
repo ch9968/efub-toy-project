@@ -2,6 +2,7 @@ import React from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Profile from "./Profile";
 
@@ -62,11 +63,12 @@ const PostButton = styled.button`
 
 function TweetBox() {
   const [tweetMessage, setTweetMessage] = useState("");
+  const navigate = useNavigate();
   const postTweet = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`blabla/posts`, {
-        message: tweetMessage,
+      await axios.post(`blahblah/posts`, {
+        content: tweetMessage,
       });
       setTweetMessage("");
     } catch (error) {
@@ -77,7 +79,11 @@ function TweetBox() {
     <TweetBoxContainer>
       <form>
         <TweetBox__input>
-          <img src="/img/profilePic.png" alt="profilePicture" />
+          <img
+            src="/img/profilePic.png"
+            alt="profilePicture"
+            onClick={() => navigate("myPage/1")}
+          />
           <input
             onChange={(e) => setTweetMessage(e.target.value)}
             value={tweetMessage}

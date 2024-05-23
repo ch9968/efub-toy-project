@@ -6,6 +6,7 @@ function PostDetailPage() {
   return (
     <div className="app">
       <Navbar />
+      /*여기 중간에 완전히 새로*/
       <Widgets />
     </div>
   );

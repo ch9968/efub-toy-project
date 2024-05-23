@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import TweetBox from "./TweetBox";
-import PostList from "./PostListItem";
+import PostList from "./PostList";
 import MiddleContainer from "./MiddleContainer";
 
 import SettingsIcon from "@mui/icons-material/Settings";

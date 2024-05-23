@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import VerifiedIcon from "@mui/icons-material/Verified";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import CachedOutlinedIcon from "@mui/icons-material/CachedOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
+import { useParams } from "react-router-dom";
 const PostContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -90,21 +90,22 @@ const PostWidget = styled.div`
   cursor: pointer;
 `;
 
-function PostListItem({}) {
+function PostListItem({ writerName, writerNickname, content, Regdate }) {
+  const { id } = useParams();
   return (
     <PostContainer>
       <img src="/img/profilePic.png" alt="profilePicture" />
       <PostBody>
         <PostHeader>
           <PostHeaderText>
-            <h3>이찬희</h3>
-            <h4>@meoww_www</h4>
+            <h3>{writerName}</h3>
+            <h4>{writerNickname}</h4>
             <p>·</p>
-            <h4>22h</h4>
+            <h4>{Regdate}</h4>
           </PostHeaderText>
         </PostHeader>
         <PostContent>
-          <p>떡꼬치 먹고싶다 떡고치떡고치ㅁㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ</p>
+          <p>{content}</p>
         </PostContent>
         <PostWidget>
           <ModeCommentOutlinedIcon />

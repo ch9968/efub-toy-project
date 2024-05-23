@@ -5,11 +5,7 @@ const WidgetsContainer = styled.div`
 `;
 
 function Widgets() {
-  return (
-    <WidgetsContainer>
-      <h2>Widgets</h2>
-    </WidgetsContainer>
-  );
+  return <WidgetsContainer></WidgetsContainer>;
 }
 
 export default Widgets;
