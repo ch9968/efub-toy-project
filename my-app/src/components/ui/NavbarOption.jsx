@@ -18,13 +18,13 @@ const StyledNavbarOption = styled.div`
     transition: 300ms;
   }
   &.NavbarOption--active {
-    color: pink;
+    color: grey;
   }
 `;
 
-function NavbarOption({ active, text, Icon }) {
+function NavbarOption({ active, text, Icon, onClick }) {
   return (
-    <StyledNavbarOption className={active ? "NavbarOption--active" : ""}>
+    <StyledNavbarOption onClick={onClick}>
       <Icon />
       <h2>{text}</h2>
     </StyledNavbarOption>

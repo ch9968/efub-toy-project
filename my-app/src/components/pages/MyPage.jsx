@@ -4,18 +4,32 @@ import Navbar from "../ui/Navbar";
 import styled from "styled-components";
 import MiddleContainer from "../ui/MiddleContainer";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
-import { useNavigate, useParams } from "react-router-dom";
-import PostList from "../ui/PostList";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import MyPosts from "../ui/MyPosts";
+import axios from "axios";
+import MyProfile from "../ui/MyProfile";
 
 const BackIcon = styled(KeyboardBackspaceIcon)`
   color: white;
   margin-left: 15px;
   margin-right: 30px;
 `;
+
 const MyPageHeader = styled.div`
   display: flex;
   align-items: center;
+  background: black;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 15px 20px;
+  border-bottom: 1px solid rgb(47, 51, 54);
+  align-items: center;
+  & > h2 {
+    font-size: 15px;
+    font-weight: 500;
+  }
 `;
 
 const MyPageHeaderText = styled.div`
@@ -49,43 +63,6 @@ const ProfileBtn = styled.button`
   margin-right: 10px;
   font-size: 15px;
   border-radius: 20px;
-`;
-
-const ProfileText = styled.div`
-  margin-top: 20px;
-  margin-left: 15px;
-  display: flex;
-  font-size: 24px;
-  flex-direction: column;
-  & > p {
-    font-size: 16px;
-    color: rgb(113, 118, 123);
-    margin-bottom: 10px;
-  }
-
-  & > div {
-    display: flex;
-    h6 {
-      font-size: 16px;
-      color: white;
-      margin-right: 8px;
-    }
-
-    p {
-      font-size: 16px;
-      text-align: left;
-      color: rgb(113, 118, 123);
-      margin-right: 20px;
-    }
-  }
-`;
-const JoinedText = styled.div`
-  display: flex;
-  align-items: center;
-  & > p {
-    font-size: 15px;
-  }
-  margin-bottom: 10px;
 `;
 
 const ProfileNavbar = styled.div`
@@ -130,9 +107,31 @@ const NavbarBox = styled.div`
 
 function MyPage() {
   const navigate = useNavigate();
-  const name = "이찬희";
-  const { id } = useParams();
-  console.log(id);
+  const { memberId } = useParams();
+  const [myPage, setMyPage] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getMyPage = async () => {
+      try {
+        if (memberId) {
+          setMyPage([]);
+          const response = await axios.get(
+            `${process.env.REACT_APP_SERVER_URL}/members/${memberId}`
+          );
+          setMyPage(response.data);
+        }
+      } catch (error) {
+        console.error(error);
+        setError(error.message);
+        setMyPage([]);
+      }
+    };
+    getMyPage();
+  }, [memberId]);
+
+  if (!myPage) return null;
+
   return (
     <div className="app">
       <Navbar />
@@ -140,7 +139,7 @@ function MyPage() {
         <MyPageHeader>
           <BackIcon onClick={() => navigate(-1)} />
           <MyPageHeaderText>
-            <h2>이찬희</h2>
+            <h2>{myPage.name}</h2>
             <h3>2 posts</h3>
           </MyPageHeaderText>
         </MyPageHeader>
@@ -159,26 +158,7 @@ function MyPage() {
           />
           <ProfileBtn>Set up Profile</ProfileBtn>
         </MyProfileBox>
-        <ProfileText>
-          <h5>{name}</h5>
-          <p>{id}</p>
-          <JoinedText>
-            <CalendarMonthOutlinedIcon
-              style={{
-                color: "rgb(113, 118, 123)",
-                width: "15px",
-                marginRight: "5px",
-              }}
-            />
-            <p>Joined May 2024</p>
-          </JoinedText>
-          <div>
-            <h6>1</h6>
-            <p>Following</p>
-            <h6>1.4K</h6>
-            <p>Followers</p>
-          </div>
-        </ProfileText>
+        <MyProfile memberId={memberId} />
         <ProfileNavbar>
           <NavbarBox>
             <h6 id="posts">Posts</h6>
@@ -200,8 +180,7 @@ function MyPage() {
             <h6>Likes</h6>
           </NavbarBox>
         </ProfileNavbar>
-
-        <PostList memberId={id} />
+        <MyPosts memberId={memberId} />
       </MiddleContainer>
       <Widgets />
     </div>

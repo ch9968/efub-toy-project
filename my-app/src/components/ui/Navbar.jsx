@@ -1,21 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-
 import XIcon from "@mui/icons-material/X";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import BookmarkBorderRoundedIcon from "@mui/icons-material/BookmarkBorderRounded";
 import FlutterDashRoundedIcon from "@mui/icons-material/FlutterDashRounded";
 import ListAltRoundedIcon from "@mui/icons-material/ListAltRounded";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import NavbarOption from "./NavbarOption";
 import BookmarkBorderRounded from "@mui/icons-material/BookmarkBorderRounded";
 import Profile from "./Profile";
+import { useNavigate } from "react-router-dom";
+
 const StyledXIcon = styled(XIcon)`
   margin-left: 20px;
   margin-bottom: 20px;
@@ -54,10 +53,23 @@ const PostButton = styled.button`
 `;
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const memberId = 1;
+  const gotoMyPage = () => {
+    navigate(`/myPage/${memberId}`);
+  };
+  const gotoHomePage = () => {
+    navigate(`/`);
+  };
   return (
     <NavbarContainer>
       <StyledXIcon />
-      <NavbarOption active={true} Icon={HomeIcon} text="Home" />
+      <NavbarOption
+        active={true}
+        Icon={HomeIcon}
+        text="Home"
+        onClick={gotoHomePage}
+      />
       <NavbarOption Icon={SearchIcon} text="Explore" />
       <NavbarOption Icon={NotificationsNoneIcon} text="Notifications" />
       <NavbarOption Icon={MailOutlineIcon} text="Messages" />
@@ -66,10 +78,14 @@ const Navbar = () => {
       <NavbarOption Icon={BookmarkBorderRounded} text="Bookmarks" />
       <NavbarOption Icon={PeopleOutlinedIcon} text="Communities" />
       <NavbarOption Icon={XIcon} text="Premium" />
-      <NavbarOption Icon={PersonOutlineOutlinedIcon} text="Profile" />
+      <NavbarOption
+        Icon={PersonOutlineOutlinedIcon}
+        text="Profile"
+        onClick={gotoMyPage}
+      />
       <NavbarOption Icon={MoreHorizIcon} text="More" />
       <PostButton>Post</PostButton>
-      <Profile name="이찬희" id="@meow__" />
+      <Profile memberId={memberId} />
     </NavbarContainer>
   );
 };

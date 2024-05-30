@@ -9,7 +9,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/myPage/:memberId" element={<MyPage />} />
-      <Route path="/post/:id" element={<PostDetailPage />} />
+      <Route path="/posts/:postId" element={<PostDetailPage />} />
     </Routes>
   );
 }

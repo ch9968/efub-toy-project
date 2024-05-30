@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import TweetBox from "./TweetBox";
-import PostList from "./PostList";
 import MiddleContainer from "./MiddleContainer";
-
 import SettingsIcon from "@mui/icons-material/Settings";
+import Posts from "./Posts";
+
 const FeedHeader = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 50px;
@@ -21,6 +21,8 @@ const FeedHeader = styled.div`
     font-weight: 500;
   }
 `;
+
+export { FeedHeader };
 const Feed = () => {
   return (
     <MiddleContainer>
@@ -30,7 +32,7 @@ const Feed = () => {
         <SettingsIcon />
       </FeedHeader>
       <TweetBox />
-      <PostList />
+      <Posts />
     </MiddleContainer>
   );
 };

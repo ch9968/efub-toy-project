@@ -1,10 +1,8 @@
 import React from "react";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Profile from "./Profile";
 
 const TweetBoxContainer = styled.div`
   padding-right: 10px;
@@ -16,7 +14,7 @@ const TweetBoxContainer = styled.div`
     flex-direction: column;
   }
 `;
-const TweetBox__input = styled.div`
+const TweetBoxInput = styled.div`
   padding: 20px;
   display: flex;
   & > input {
@@ -39,9 +37,7 @@ const TweetBox__input = styled.div`
     }
   }
 `;
-const StyledAccountCircleIcon = styled(AccountCircleIcon)`
-  font-size: 40px;
-`;
+
 const PostButton = styled.button`
   background-color: rgb(29, 155, 240);
   color: white;
@@ -67,10 +63,12 @@ function TweetBox() {
   const postTweet = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`blahblah/posts`, {
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}/posts`, {
+        memberId: 1,
         content: tweetMessage,
       });
       setTweetMessage("");
+      e.target.value = "";
     } catch (error) {
       console.error(error);
     }
@@ -78,7 +76,7 @@ function TweetBox() {
   return (
     <TweetBoxContainer>
       <form>
-        <TweetBox__input>
+        <TweetBoxInput>
           <img
             src="/img/profilePic.png"
             alt="profilePicture"
@@ -90,7 +88,7 @@ function TweetBox() {
             placeholder="What is happening?!"
             type="text"
           />
-        </TweetBox__input>
+        </TweetBoxInput>
         <PostButton onClick={postTweet} type="submit">
           Post
         </PostButton>
